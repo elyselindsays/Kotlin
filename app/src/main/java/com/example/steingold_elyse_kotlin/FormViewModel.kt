@@ -32,8 +32,8 @@ class FormViewModel: ViewModel() {
         MutableLiveData<String>()
     }
 
-    val zip: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
+    val zip: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
     }
 
     val bio: MutableLiveData<String> by lazy {
@@ -44,17 +44,6 @@ class FormViewModel: ViewModel() {
         MutableLiveData<String>()
     }
 
-    fun setFirstName(firstNameText: String) {
-        firstName.setValue(firstNameText)
-    }
-
-    fun setLastName(lastNameText: String) {
-        lastName.setValue(lastNameText)
-    }
-
-
-
-
 
     fun setFragment1ModelData(firstNameText: String, lastNameText: String, emailText: String, phoneText: String){
         firstName.setValue(firstNameText)
@@ -63,18 +52,16 @@ class FormViewModel: ViewModel() {
         phone.setValue(phoneText)
     }
 
-    fun setFragment2ModelData(firstNameText: String, lastNameText: String, emailText: String, phoneText: String){
-        firstName.setValue(firstNameText)
-        lastName.setValue(lastNameText)
-        email.setValue(emailText)
-        phone.setValue(phoneText)
+    fun setFragment2ModelData(streetText: String, cityText: String, stateText: String, zipText: String){
+        street.setValue(streetText)
+        city.setValue(cityText)
+        state.setValue(stateText)
+        zip.setValue(zipText)
     }
 
-    fun setFragment3ModelData(firstNameText: String, lastNameText: String, emailText: String, phoneText: String){
-        firstName.setValue(firstNameText)
-        lastName.setValue(lastNameText)
-        email.setValue(emailText)
-        phone.setValue(phoneText)
+    fun setFragment3ModelData(bioText: String, interestsText: String){
+        bio.setValue(bioText)
+        interests.setValue(interestsText)
     }
 
 

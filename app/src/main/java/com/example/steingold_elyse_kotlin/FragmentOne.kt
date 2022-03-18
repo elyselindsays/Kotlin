@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_two.*
 
 class FragmentOne : Fragment() {
 
-    lateinit var nextButton: Button
+    lateinit var saveButton: Button
     lateinit var firstNameText: EditText
     lateinit var lastNameText: EditText
     lateinit var emailText: EditText
@@ -39,7 +39,7 @@ class FragmentOne : Fragment() {
 
         val viewModel = ViewModelProvider(requireActivity()).get(FormViewModel::class.java)
 
-        nextButton = view.findViewById(R.id.nextButton)
+        saveButton = view.findViewById(R.id.saveButton)
         firstNameText = view.findViewById(R.id.firstNameInput)
         lastNameText = view.findViewById(R.id.lastNameInput)
         emailText = view.findViewById(R.id.emailInput)
@@ -78,8 +78,7 @@ class FragmentOne : Fragment() {
         }
 
 
-
-        nextButton.setOnClickListener{
+        saveButton.setOnClickListener{
             viewModel.setFragment1ModelData(
                 firstNameText.text.toString(),
                 lastNameText.text.toString(),
