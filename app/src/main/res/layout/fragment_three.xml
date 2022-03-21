@@ -3,21 +3,87 @@
     android:layout_width="match_parent"
     android:id="@+id/fragment3"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/first_name"
-        />
+    <LinearLayout
+        android:id="@+id/resultsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/firstNameRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name" />
+
+        <TextView
+            android:id="@+id/lastNameRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name" />
+
+        <TextView
+            android:id="@+id/emailRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email" />
+
+        <TextView
+            android:id="@+id/phoneRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone" />
+
+        <TextView
+            android:id="@+id/streetRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/street" />
+
+        <TextView
+            android:id="@+id/cityRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/city" />
+
+        <TextView
+            android:id="@+id/stateRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state" />
+
+        <TextView
+            android:id="@+id/zipRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/zip" />
+
+        <TextView
+            android:id="@+id/bioRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bio" />
+
+        <TextView
+            android:id="@+id/interestsRes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/interests" />
+
+    </LinearLayout>
+
+
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/streetField"
+        android:id="@+id/bioField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/streetText"
+            android:id="@+id/bioInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
@@ -26,11 +92,11 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/cityField"
+        android:id="@+id/interestsField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/cityText"
+            android:id="@+id/interestsInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="25dp"
@@ -44,6 +110,8 @@
         android:text="@string/submit"
         android:enabled="false"
         />
+
+
 
 
 

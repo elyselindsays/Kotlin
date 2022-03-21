@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel: FormViewModel
     val listFragments = mutableListOf<Fragment>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,5 +32,14 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(FormViewModel::class.java)
 
+
+
+
     }
+
+
+
+
+
+
 }

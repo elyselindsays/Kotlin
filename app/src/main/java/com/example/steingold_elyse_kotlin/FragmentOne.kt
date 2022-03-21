@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -25,6 +26,10 @@ class FragmentOne : Fragment() {
     lateinit var lastNameText: EditText
     lateinit var emailText: EditText
     lateinit var phoneNumber: EditText
+    var firstNameValid = false
+    var lastNameValid = false
+    var emailValid = false
+    var phoneValid = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,18 +50,78 @@ class FragmentOne : Fragment() {
         emailText = view.findViewById(R.id.emailInput)
         phoneNumber = view.findViewById(R.id.phoneInput)
 
+        checkEmpty()
+        checkNameValid()
+        checkLastNameValid()
+        checkEmailValid()
+        checkPhoneValid()
+
+
+        saveButton.setOnClickListener{
+                viewModel.setFragment1ModelData(
+                    firstNameText.text.toString(),
+                    lastNameText.text.toString(),
+                    emailText.text.toString(),
+                    phoneNumber.text.toString()
+                )
+                swipe.isVisible = true
+            }
+       }
+
+
+    fun checkEmpty(){
+        firstNameText.doOnTextChanged { text, start, before, count ->
+            if (!text.isNullOrBlank()) {
+                firstNameValid = true
+                firstNameField.error = null
+                checkAllValid()
+            }
+        }
+        lastNameText.doOnTextChanged { text, start, before, count ->
+            if (!text.isNullOrBlank()) {
+                lastNameValid = true
+                lastNameField.error = null
+                checkAllValid()
+            }
+        }
+        emailText.doOnTextChanged { text, start, before, count ->
+            if (!text.isNullOrBlank()) {
+                emailValid = true
+                emailField.error = null
+                checkAllValid()
+            }
+        }
+        phoneNumber.doOnTextChanged { text, start, before, count ->
+            if (!text.isNullOrBlank()) {
+                phoneValid = true
+                phoneField.error = null
+                checkAllValid()
+            }
+        }
+
+    }
+
+    fun checkNameValid() {
         firstNameText.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus && firstNameText.text.isNullOrBlank()) {
-                firstNameText.error = "This field is required"
+                firstNameField.error = "This field is required"
+            } else {
+                firstNameValid = true
             }
         }
+    }
 
+    fun checkLastNameValid(){
         lastNameText.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus && lastNameText.text.isNullOrBlank()) {
-                lastNameText.error = "This field is required"
+                lastNameField.error = "This field is required"
+            } else {
+                lastNameValid = true
             }
         }
+    }
 
+    fun checkEmailValid(){
         emailText.setOnFocusChangeListener { view, hasFocus ->
             if (!hasFocus && emailText.text.isNullOrBlank()) {
                 emailText.error = "This field is required"
@@ -64,31 +129,29 @@ class FragmentOne : Fragment() {
                 emailText.error = "Please enter a valid email address"
             } else if (!hasFocus && !emailText.text.contains('.')) {
                 emailText.error = "Please enter a valid email address"
+            } else {
+                emailValid = true
             }
         }
+    }
 
-        phoneNumber.setOnFocusChangeListener { view, hasFocus ->
-            if (!hasFocus && phoneNumber.text.isNullOrBlank()) {
+    fun checkPhoneValid(){
+        phoneNumber.doOnTextChanged { text, start, before, count ->
+            if (text.isNullOrBlank()) {
                 phoneNumber.error = "This field is required"
-            } else if (!hasFocus && phoneNumber.length() < 10) {
+            } else if (text.length < 10) {
                 phoneNumber.error = "Please enter a 10-digit phone number"
-            } else if (!hasFocus && !phoneNumber.text.matches(".*[0-9].*".toRegex())) {
+            } else if (!text.matches(".*[0-9].*".toRegex())) {
                 phoneNumber.error = "Please enter a valid phone number"
+            } else {
+                phoneValid = true
             }
         }
+    }
 
-
-        saveButton.setOnClickListener{
-            viewModel.setFragment1ModelData(
-                firstNameText.text.toString(),
-                lastNameText.text.toString(),
-                emailText.text.toString(),
-                phoneNumber.text.toString()
-
-            )
-
-            swipe.isVisible = true
-
+    fun checkAllValid() {
+        if (firstNameValid && lastNameValid && emailValid && phoneValid) {
+            saveButton.isEnabled = true
         }
     }
 

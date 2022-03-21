@@ -20,7 +20,7 @@ class FormViewModel: ViewModel() {
         MutableLiveData<String>()
     }
 
-    val street: MutableLiveData<String> by lazy {
+    val address: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
 
@@ -46,14 +46,14 @@ class FormViewModel: ViewModel() {
 
 
     fun setFragment1ModelData(firstNameText: String, lastNameText: String, emailText: String, phoneText: String){
-        firstName.setValue(firstNameText)
-        lastName.setValue(lastNameText)
-        email.setValue(emailText)
-        phone.setValue(phoneText)
+        firstName.value = firstNameText
+        lastName.value = lastNameText
+        email.value = emailText
+        phone.value = phoneText
     }
 
-    fun setFragment2ModelData(streetText: String, cityText: String, stateText: String, zipText: String){
-        street.setValue(streetText)
+    fun setFragment2ModelData(addressText: String, cityText: String, stateText: String, zipText: String){
+        address.setValue(addressText)
         city.setValue(cityText)
         state.setValue(stateText)
         zip.setValue(zipText)
@@ -63,8 +63,5 @@ class FormViewModel: ViewModel() {
         bio.setValue(bioText)
         interests.setValue(interestsText)
     }
-
-
-
 
 }
